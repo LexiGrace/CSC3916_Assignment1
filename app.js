@@ -7,12 +7,14 @@ app.use(bodyParser.text({
         return 'text';
     }
 }));
-app.post('/', (req, res) =>{
+
+
+app.post('/', (req, res)=> {
    console.log(req,body)
    res= res.status(200)
    var contentType = req.get('Content-type');
    if (contentType) {
-    console.log("Content type:" +contentType);
+    console.log("Content type:" + contentType);
     res= res.type(contentType)
    } 
    res.send(req.body)
@@ -20,6 +22,6 @@ app.post('/', (req, res) =>{
 
 app.listen(process.env.PORT || 8080);
 
-module.exports = server; // for testing
+module.exports = app; // for testing
 
 //curl -d "echo" -H "Content-Type: text" -X POST http://localhost:8008
